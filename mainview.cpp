@@ -1304,7 +1304,7 @@ void CMainView::OnEditPastefile()
 
 			oleobj->GetUserClassID(&psid);
 
-
+		 
 			hr = oleobj->IsUpToDate();
 
 
