@@ -1272,22 +1272,48 @@ void CMainView::OnOleChangeSource()
 
 void CMainView::OnEditPastefile()
 {
-	//COleClientItem* pActiveNew = new COleClientItem(this->GetDocument());
-	//
-	//char file[] = "file";
-	//BOOL b = pActiveNew->CreateFromFile(file);
 
-	//// OleCreateFromFile
-	////pActiveNew->m_lpObject
-	//
+	/*
+	un IOleObject avec OleLoad (et le IStorage)
+	et surtout un IDataObject via un QueryInterface sur le IOleObject
+	C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133
+	https://github.com/SathishKumarMani13/sathishwinscp/blob/3266c40c2d98ae659b1e8fe32a596697f8bdacf0/libs/mfc/source/olecli1.cpp
+	*/
 
-	//if (b)
-	//	pActiveNew->Activate(OLEIVERB_PRIMARY, this);
+	POSITION pos = this->GetDocument()->GetStartPosition();
+	HRESULT hr = S_OK;
+	IDataObject* pdata = nullptr;
 
-	//
-													 
-	//COleDataObject dataObject;
-	//dataObject.Attach()
-	//pItem = DoPasteItem(bLink, &dataObject, NULL, cf);
-	//this->GetDocument()->UpdateAllViews(NULL);
+	COleClientItem* pActiveItem = this->GetDocument()->GetNextClientItem(pos);
+
+	
+	//FORMATETC formatEtc;
+	//FORMATETC formatEtc;
+	//lpFormatEtc = _AfxFillFormatEtc(lpFormatEtc, cfFormat, &formatEtc);
+
+
+
+	if (pActiveItem != nullptr)
+	{
+		IOleObject* oleobj = pActiveItem->m_lpObject;
+		if (oleobj != nullptr)
+		{
+			hr = oleobj->QueryInterface(&pdata);
+			
+			CLSID psid;
+
+			oleobj->GetUserClassID(&psid);
+
+
+			hr = oleobj->IsUpToDate();
+
+
+			//SCODE sc = ::OleCreateFromData(pdata, IID_IUnknown, render,lpFormatEtc, lpClientSite, m_lpStorage, (LPLP)&m_lpObject);
+			
+			pActiveItem->Activate(OLEIVERB_PRIMARY, this);
+
+			ATLTRACE("ok");
+		}
+	}
+
 }

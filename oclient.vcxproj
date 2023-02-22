@@ -595,6 +595,7 @@ makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(Identity)" &gt;&gt; "hlp\HTMLDefines.
     </None>
     <None Include="res\oclient.ico" />
     <None Include="res\toolbar.bmp" />
+    <None Include="test.http" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oclient.rc" />

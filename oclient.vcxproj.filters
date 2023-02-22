@@ -299,6 +299,7 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ReadMe.htm" />
+    <None Include="test.http" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oclient.rc">
