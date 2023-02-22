@@ -1272,15 +1272,19 @@ void CMainView::OnOleChangeSource()
 
 void CMainView::OnEditPastefile()
 {
-	COleClientItem* pActiveNew = new COleClientItem(this->GetDocument());
-	
-	char file[] = "file";
-	BOOL b = pActiveNew->CreateFromFile(file);
+	//COleClientItem* pActiveNew = new COleClientItem(this->GetDocument());
+	//
+	//char file[] = "file";
+	//BOOL b = pActiveNew->CreateFromFile(file);
 
-	if (b)
-		pActiveNew->Activate(OLEIVERB_PRIMARY, this);
+	//// OleCreateFromFile
+	////pActiveNew->m_lpObject
+	//
 
-	
+	//if (b)
+	//	pActiveNew->Activate(OLEIVERB_PRIMARY, this);
+
+	//
 													 
 	//COleDataObject dataObject;
 	//dataObject.Attach()
