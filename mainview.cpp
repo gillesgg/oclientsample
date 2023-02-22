@@ -1274,7 +1274,7 @@ void CMainView::OnEditPastefile()
 {
 	COleClientItem* pActiveNew = new COleClientItem(this->GetDocument());
 	
-	char file[] = "C:\\Users\\gillesg\\Desktop\\Book1.xlsx";
+	char file[] = "file";
 	BOOL b = pActiveNew->CreateFromFile(file);
 
 	if (b)
